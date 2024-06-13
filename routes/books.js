@@ -2,7 +2,7 @@ const express = require("express");
 const {
   getAllBooks,
   getSingleBookById,
-  getAllIssuedBooks
+  getAllIssuedBooks,
 } = require("../controllers/book-controller");
 const { books } = require("../data/books.json");
 const { users } = require("../data/users.json");
@@ -48,11 +48,11 @@ router.get("/:id", getSingleBookById);
  * Parameters: None
  */
 router.get("/", getAllBooks);
-// router.get("/", (req, res) => {
-//   res
-//     .status(200)
-//     .json({ sucess: true, message: "Got all the Books", data: books });
-// });
+router.get("/", (req, res) => {
+  res
+    .status(200)
+    .json({ sucess: true, message: "Got all the Books", data: books });
+});
 
 /**
  * Route: /books/issued
@@ -157,4 +157,5 @@ router.put("/updateBook/:id", (req, res) => {
 //     data: updateBookData,
 //   });
 // });
+
 module.exports = router;
